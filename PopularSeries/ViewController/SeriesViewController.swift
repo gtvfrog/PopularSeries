@@ -33,8 +33,8 @@ class SeriesViewController: UIViewController, UITableViewDataSource,UITableViewD
         
         let serie = series![indexPath.row] as! NSDictionary
         
-        let name = serie["name"] as! String
-        let overview = serie["overview"] as! String
+        let name = serie["name"] as? String
+        let overview = serie["overview"] as? String
         let imagePath = serie["poster_path"] as! String
        
         cell.nameLabel.text = name
@@ -73,7 +73,7 @@ class SeriesViewController: UIViewController, UITableViewDataSource,UITableViewD
                 let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]
 
                 if(self.series == nil){
-                    self.series = json?["results"] as! Array<Any>
+                    self.series = json?["results"] as? Array<Any>
                 }
                 else{
                     let results = json?["results"] as! Array<Any>
